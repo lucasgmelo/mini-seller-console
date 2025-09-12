@@ -4,13 +4,22 @@ import type { Lead } from '../types';
 import { useLeads } from '../hooks/useLeads';
 import { LeadsFilters } from './LeadsFilters';
 import { LeadsTable } from './LeadsTable';
-import { Modal } from './ui/Modal';
+import { SlideOver } from './ui/SlideOver';
+import { LeadEditPanel } from './LeadEditPanel';
 
 export const LeadsList = () => {
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
 
-  const { leads, isLoading, error, filters, sort, updateFilters, updateSort } =
-    useLeads();
+  const {
+    leads,
+    isLoading,
+    error,
+    filters,
+    sort,
+    updateFilters,
+    updateSort,
+    updateLead,
+  } = useLeads();
 
   const handleSort = (field: keyof Lead) => {
     if (sort.field !== field) {
@@ -24,6 +33,13 @@ export const LeadsList = () => {
 
   const handleSelectLead = (lead: Lead) => {
     setSelectedLead(lead);
+  };
+
+  const handleSaveLead = async (updates: Partial<Lead>) => {
+    if (selectedLead) {
+      await updateLead(selectedLead.id, updates);
+      setSelectedLead(prev => (prev ? { ...prev, ...updates } : null));
+    }
   };
 
   if (error) {
@@ -86,54 +102,20 @@ export const LeadsList = () => {
         />
       </main>
 
-      <Modal
+      <SlideOver
         isOpen={!!selectedLead}
         onClose={() => setSelectedLead(null)}
-        title='Lead Details'
+        title='Edit Lead'
       >
         {selectedLead && (
-          <div className='space-y-4'>
-            <div>
-              <label className='block text-sm font-medium text-gray-700'>
-                Name
-              </label>
-              <p className='text-sm text-gray-900'>{selectedLead.name}</p>
-            </div>
-            <div>
-              <label className='block text-sm font-medium text-gray-700'>
-                Company
-              </label>
-              <p className='text-sm text-gray-900'>{selectedLead.company}</p>
-            </div>
-            <div>
-              <label className='block text-sm font-medium text-gray-700'>
-                Email
-              </label>
-              <p className='text-sm text-gray-900'>{selectedLead.email}</p>
-            </div>
-            <div>
-              <label className='block text-sm font-medium text-gray-700'>
-                Source
-              </label>
-              <p className='text-sm text-gray-900'>{selectedLead.source}</p>
-            </div>
-            <div>
-              <label className='block text-sm font-medium text-gray-700'>
-                Score
-              </label>
-              <p className='text-sm text-gray-900'>{selectedLead.score}/100</p>
-            </div>
-            <div>
-              <label className='block text-sm font-medium text-gray-700'>
-                Status
-              </label>
-              <p className='text-sm text-gray-900 capitalize'>
-                {selectedLead.status}
-              </p>
-            </div>
-          </div>
+          <LeadEditPanel
+            lead={selectedLead}
+            onSave={handleSaveLead}
+            onClose={() => setSelectedLead(null)}
+            isLoading={isLoading}
+          />
         )}
-      </Modal>
+      </SlideOver>
     </div>
   );
 };

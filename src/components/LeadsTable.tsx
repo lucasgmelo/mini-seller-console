@@ -187,7 +187,7 @@ export const LeadsTable = ({
                 onClick={() => onSelectLead(lead)}
                 role='button'
                 tabIndex={0}
-                aria-label={`View details for ${lead.name} from ${lead.company}`}
+                aria-label={`Edit ${lead.name} from ${lead.company}`}
                 onKeyDown={e => {
                   if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
@@ -230,7 +230,7 @@ export const LeadsTable = ({
                       onSelectLead(lead);
                     }}
                   >
-                    View details
+                    Edit
                   </Button>
                 </td>
               </tr>
