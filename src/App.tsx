@@ -22,11 +22,12 @@ function App() {
   return (
     <div className='min-h-screen bg-gray-50'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
-        <nav className='mb-8'>
-          <div className='flex space-x-4'>
+        <nav className='mb-6 sm:mb-8'>
+          <div className='flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-4'>
             <Button
               variant={currentView === 'leads' ? 'primary' : 'secondary'}
               onClick={() => handleViewChange('leads')}
+              className='w-full sm:w-auto'
             >
               Leads
             </Button>
@@ -35,6 +36,7 @@ function App() {
                 currentView === 'opportunities' ? 'primary' : 'secondary'
               }
               onClick={() => handleViewChange('opportunities')}
+              className='w-full sm:w-auto'
             >
               Opportunities
             </Button>

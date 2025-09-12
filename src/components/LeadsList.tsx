@@ -81,9 +81,11 @@ export const LeadsList = () => {
         Skip to main content
       </a>
 
-      <header>
-        <h1 className='text-2xl font-bold text-gray-900'>Leads</h1>
-        <p className='text-gray-600'>Manage and track your sales leads</p>
+      <header className='mb-6'>
+        <h1 className='text-xl sm:text-2xl font-bold text-gray-900'>Leads</h1>
+        <p className='text-sm sm:text-base text-gray-600'>
+          Manage and track your sales leads
+        </p>
       </header>
 
       <LeadsFilters

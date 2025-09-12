@@ -59,14 +59,14 @@ export const SlideOver = ({
       aria-modal='true'
       aria-labelledby='slide-over-title'
     >
-      <div className='fixed inset-y-0 right-0 flex max-w-full pl-10'>
+      <div className='fixed inset-y-0 right-0 flex max-w-full pl-4 sm:pl-10'>
         <div
           ref={slideOverRef}
-          className='pointer-events-auto w-screen max-w-md transform transition ease-in-out duration-300'
+          className='pointer-events-auto w-screen max-w-sm sm:max-w-md transform transition ease-in-out duration-300'
           tabIndex={-1}
         >
           <div className='flex h-full flex-col overflow-y-scroll bg-white shadow-xl'>
-            <div className='flex items-center justify-between px-6 py-4 border-b border-gray-200'>
+            <div className='flex items-center justify-between px-4 sm:px-6 py-4 border-b border-gray-200'>
               <h2
                 id='slide-over-title'
                 className='text-lg font-semibold text-gray-900'
@@ -93,7 +93,7 @@ export const SlideOver = ({
                 </svg>
               </button>
             </div>
-            <div className='flex-1 px-6 py-6'>{children}</div>
+            <div className='flex-1 px-4 sm:px-6 py-6'>{children}</div>
           </div>
         </div>
       </div>

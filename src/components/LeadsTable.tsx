@@ -151,7 +151,56 @@ export const LeadsTable = ({
 
   return (
     <div className='bg-white shadow rounded-lg overflow-hidden'>
-      <div className='overflow-x-auto'>
+      {/* Mobile Cards View */}
+      <div className='block sm:hidden'>
+        <div className='space-y-4 p-4'>
+          {leads.map(lead => (
+            <div
+              key={lead.id}
+              className='border border-gray-200 rounded-lg p-4 space-y-3 cursor-pointer hover:bg-gray-50'
+              onClick={() => onSelectLead(lead)}
+            >
+              <div className='flex justify-between items-start'>
+                <div>
+                  <h3 className='text-sm font-medium text-gray-900'>
+                    {lead.name}
+                  </h3>
+                  <p className='text-xs text-gray-500'>{lead.email}</p>
+                </div>
+                <Badge variant={getStatusColor(lead.status)}>
+                  {getStatusLabel(lead.status)}
+                </Badge>
+              </div>
+
+              <div className='flex justify-between items-center text-sm'>
+                <div>
+                  <p className='text-gray-900 font-medium'>{lead.company}</p>
+                  <p className='text-gray-500 text-xs'>{lead.source}</p>
+                </div>
+                <span className={`font-medium ${getScoreColor(lead.score)}`}>
+                  {formatScore(lead.score)}
+                </span>
+              </div>
+
+              <div className='flex justify-end'>
+                <Button
+                  size='sm'
+                  variant='ghost'
+                  onClick={e => {
+                    e.stopPropagation();
+                    onSelectLead(lead);
+                  }}
+                >
+                  Edit
+                </Button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Desktop Table View */}
+      <div className='hidden sm:block overflow-x-auto'>
         <table
           className='min-w-full divide-y divide-gray-200'
           role='table'

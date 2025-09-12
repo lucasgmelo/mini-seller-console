@@ -123,12 +123,54 @@ export const OpportunitiesList = () => {
   return (
     <div className='space-y-6'>
       <header>
-        <h1 className='text-2xl font-bold text-gray-900'>Opportunities</h1>
-        <p className='text-gray-600'>Track your sales pipeline and deals</p>
+        <h1 className='text-xl sm:text-2xl font-bold text-gray-900'>
+          Opportunities
+        </h1>
+        <p className='text-sm sm:text-base text-gray-600'>
+          Track your sales pipeline and deals
+        </p>
       </header>
 
       <div className='bg-white shadow rounded-lg overflow-hidden'>
-        <div className='overflow-x-auto'>
+        {/* Mobile Cards View */}
+        <div className='block sm:hidden'>
+          <div className='space-y-4 p-4'>
+            {opportunities.map(opportunity => (
+              <div
+                key={opportunity.id}
+                className='border border-gray-200 rounded-lg p-4 space-y-3'
+              >
+                <div className='flex justify-between items-start'>
+                  <div>
+                    <h3 className='text-sm font-medium text-gray-900'>
+                      {opportunity.name}
+                    </h3>
+                    <p className='text-xs text-gray-500'>
+                      {opportunity.accountName}
+                    </p>
+                  </div>
+                  <Badge variant={getStageColor(opportunity.stage)}>
+                    {getStageLabel(opportunity.stage)}
+                  </Badge>
+                </div>
+
+                <div className='flex justify-between items-center'>
+                  <div>
+                    <p className='text-sm text-gray-900 font-medium'>
+                      {formatCurrency(opportunity.amount)}
+                    </p>
+                    <p className='text-xs text-gray-500'>
+                      {new Date(opportunity.createdAt).toLocaleDateString()}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop Table View */}
+        <div className='hidden sm:block overflow-x-auto'>
           <table
             className='min-w-full divide-y divide-gray-200'
             role='table'
