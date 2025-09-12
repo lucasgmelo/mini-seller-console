@@ -47,9 +47,19 @@ export const generateId = (): string => {
   return Date.now().toString(36) + Math.random().toString(36).substring(2);
 };
 
-export const simulateApiCall = <T>(data: T, delay = 1000): Promise<T> => {
-  return new Promise(resolve => {
-    setTimeout(() => resolve(data), delay);
+export const simulateApiCall = <T>(
+  data: T,
+  delay = 1000,
+  failureRate = 0
+): Promise<T> => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (Math.random() < failureRate) {
+        reject(new Error('Network error: Request failed'));
+      } else {
+        resolve(data);
+      }
+    }, delay);
   });
 };
 

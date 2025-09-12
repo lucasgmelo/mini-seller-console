@@ -13,7 +13,7 @@ export const leadsApi = {
       throw new Error('Lead not found');
     }
     const updatedLead = { ...lead, ...updates };
-    return simulateApiCall(updatedLead, 300);
+    return simulateApiCall(updatedLead, 300, 0.2);
   },
 };
 
@@ -34,6 +34,6 @@ export const opportunitiesApi = {
       accountName: lead.company,
       createdAt: new Date().toISOString(),
     };
-    return simulateApiCall(newOpportunity, 500);
+    return simulateApiCall(newOpportunity, 500, 0.15);
   },
 };
