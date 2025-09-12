@@ -65,9 +65,6 @@ export const LeadEditPanel = ({
         amount,
       });
     },
-    onSuccess: () => {
-      onClose();
-    },
     onError: error => {
       console.error('Failed to convert lead to opportunity:', error);
     },
@@ -108,16 +105,6 @@ export const LeadEditPanel = ({
       await onSave(updates);
       setHasChanges(false);
     }
-  };
-
-  const handleCancel = () => {
-    if (hasChanges) {
-      const confirmed = window.confirm(
-        'You have unsaved changes. Are you sure you want to close?'
-      );
-      if (!confirmed) return;
-    }
-    onClose();
   };
 
   const handleConvertToOpportunity = () => {
@@ -289,7 +276,7 @@ export const LeadEditPanel = ({
       )}
 
       <div className='flex justify-end space-x-3 pt-4 border-t border-gray-200'>
-        <Button variant='secondary' onClick={handleCancel} disabled={isLoading}>
+        <Button variant='secondary' onClick={onClose} disabled={isLoading}>
           Cancel
         </Button>
         <Button

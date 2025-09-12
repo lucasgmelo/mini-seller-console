@@ -5,9 +5,11 @@ import type { Lead, FilterState, SortState } from '../types';
 import { filterLeads, sortLeads } from '../utils/dataUtils';
 import { useLocalStorage } from './useLocalStorage';
 import { leadsApi } from '../services/api';
+import { useToastContext } from '../contexts/ToastContext';
 
 export const useLeads = () => {
   const queryClient = useQueryClient();
+  const { showError, showSuccess } = useToastContext();
 
   const [filters, setFilters] = useLocalStorage<FilterState>('leads-filters', {
     search: '',
@@ -23,6 +25,7 @@ export const useLeads = () => {
     data: leads = [],
     isLoading,
     error,
+    refetch,
   } = useQuery({
     queryKey: ['leads'],
     queryFn: leadsApi.getAll,
@@ -31,10 +34,32 @@ export const useLeads = () => {
   const updateMutation = useMutation({
     mutationFn: ({ id, updates }: { id: string; updates: Partial<Lead> }) =>
       leadsApi.update(id, updates),
-    onSuccess: updatedLead => {
-      queryClient.setQueryData(['leads'], (oldLeads: Lead[] = []) =>
-        oldLeads.map(lead => (lead.id === updatedLead.id ? updatedLead : lead))
+
+    onMutate: async ({ id, updates }) => {
+      await queryClient.cancelQueries({ queryKey: ['leads'] });
+
+      const previousLeads = queryClient.getQueryData<Lead[]>(['leads']);
+
+      queryClient.setQueryData<Lead[]>(['leads'], (oldLeads = []) =>
+        oldLeads.map(lead => (lead.id === id ? { ...lead, ...updates } : lead))
       );
+
+      return { previousLeads, id, updates };
+    },
+
+    onError: (_, __, context) => {
+      if (context?.previousLeads) {
+        queryClient.setQueryData(['leads'], context.previousLeads);
+      }
+      showError('Update Failed', 'Changes were rolled back. Please try again.');
+    },
+
+    onSuccess: () => {
+      showSuccess('Lead Updated', 'Changes saved successfully');
+    },
+
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ['leads'] });
     },
   });
 
@@ -59,7 +84,8 @@ export const useLeads = () => {
     leads: processedLeads,
     allLeads: leads,
     isLoading: isLoading || updateMutation.isPending,
-    error: error?.message || updateMutation.error?.message || null,
+    error,
+    refetch,
     filters,
     sort,
     updateLead,

@@ -38,31 +38,54 @@ const formatCurrency = (amount?: number) => {
 };
 
 export const OpportunitiesList = () => {
-  const { opportunities, isLoading, error } = useOpportunities();
+  const { opportunities, isLoading, error, refetch } = useOpportunities();
 
   if (error) {
     return (
-      <div className='bg-red-50 border border-red-200 rounded-lg p-4'>
-        <div className='flex'>
-          <svg
-            className='h-5 w-5 text-red-400'
-            fill='none'
-            viewBox='0 0 24 24'
-            stroke='currentColor'
-          >
-            <path
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              strokeWidth={2}
-              d='M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
-            />
-          </svg>
-          <div className='ml-3'>
-            <h3 className='text-sm font-medium text-red-800'>
-              Error loading opportunities
-            </h3>
-            <div className='mt-2 text-sm text-red-700'>
-              <p>{error}</p>
+      <div className='space-y-6'>
+        <header>
+          <h1 className='text-xl sm:text-2xl font-bold text-gray-900'>
+            Opportunities
+          </h1>
+          <p className='text-sm sm:text-base text-gray-600'>
+            Track your sales pipeline and deals
+          </p>
+        </header>
+
+        <div className='bg-red-50 border border-red-200 rounded-lg p-6'>
+          <div className='flex items-start'>
+            <svg
+              className='h-6 w-6 text-red-400 mt-0.5'
+              fill='none'
+              viewBox='0 0 24 24'
+              stroke='currentColor'
+            >
+              <path
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth={2}
+                d='M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
+              />
+            </svg>
+            <div className='ml-3 flex-1'>
+              <h3 className='text-sm font-medium text-red-800'>
+                Failed to Load Opportunities
+              </h3>
+              <div className='mt-2 text-sm text-red-700'>
+                <p>
+                  Unable to fetch opportunities data. Please check your
+                  connection and try again.
+                </p>
+              </div>
+              <div className='mt-4'>
+                <button
+                  onClick={() => refetch()}
+                  disabled={isLoading}
+                  className='bg-red-100 hover:bg-red-200 disabled:opacity-50 disabled:cursor-not-allowed text-red-800 px-4 py-2 rounded-md text-sm font-medium transition-colors'
+                >
+                  {isLoading ? 'Retrying...' : 'Try Again'}
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -3,8 +3,11 @@ import { useState } from 'react';
 import { LeadsList } from './components/LeadsList';
 import { OpportunitiesList } from './components/OpportunitiesList';
 import { Button } from './components/ui/Button';
+import { ToastContainer } from './components/ui/Toast';
+import { ToastProvider, useToastContext } from './contexts/ToastContext';
 
-function App() {
+const AppContent = () => {
+  const { toasts, hideToast } = useToastContext();
   const [currentView, setCurrentView] = useState<'leads' | 'opportunities'>(
     () => {
       const saved = localStorage.getItem('mini-seller-console-view');
@@ -45,7 +48,17 @@ function App() {
 
         {currentView === 'leads' ? <LeadsList /> : <OpportunitiesList />}
       </div>
+
+      <ToastContainer toasts={toasts} onClose={hideToast} />
     </div>
+  );
+};
+
+function App() {
+  return (
+    <ToastProvider>
+      <AppContent />
+    </ToastProvider>
   );
 }
 
