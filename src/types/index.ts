@@ -32,6 +32,6 @@ export interface FilterState {
 }
 
 export interface SortState {
-  field: keyof Lead;
+  field: keyof Lead | null;
   direction: 'asc' | 'desc';
 }

@@ -15,9 +15,13 @@ export const filterLeads = (leads: Lead[], filters: FilterState): Lead[] => {
 };
 
 export const sortLeads = (leads: Lead[], sort: SortState): Lead[] => {
+  if (!sort.field) {
+    return [...leads];
+  }
+
   return [...leads].sort((a, b) => {
-    const aValue = a[sort.field];
-    const bValue = b[sort.field];
+    const aValue = a[sort.field!];
+    const bValue = b[sort.field!];
 
     if (typeof aValue === 'number' && typeof bValue === 'number') {
       return sort.direction === 'asc' ? aValue - bValue : bValue - aValue;

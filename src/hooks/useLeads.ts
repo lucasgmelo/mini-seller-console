@@ -15,8 +15,8 @@ export const useLeads = () => {
   });
 
   const [sort, setSort] = useLocalStorage<SortState>('leads-sort', {
-    field: 'score',
-    direction: 'desc',
+    field: null,
+    direction: 'asc',
   });
 
   const {
