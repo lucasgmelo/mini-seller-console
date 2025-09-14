@@ -1,25 +1,21 @@
 import { useOpportunities } from '../hooks/useOpportunities';
+import { BackToTopButton } from './ui/BackToTopButton';
 import { Badge } from './ui/Badge';
+import { ErrorFallback } from './ui/ErrorFallback';
+
+const STAGE_COLORS = {
+  prospecting: 'info',
+  qualification: 'warning',
+  proposal: 'default',
+  negotiation: 'warning',
+  'closed-won': 'success',
+  'closed-lost': 'danger',
+} as const;
 
 const getStageColor = (
   stage: string
 ): 'default' | 'success' | 'warning' | 'danger' | 'info' => {
-  switch (stage) {
-    case 'prospecting':
-      return 'info';
-    case 'qualification':
-      return 'warning';
-    case 'proposal':
-      return 'default';
-    case 'negotiation':
-      return 'warning';
-    case 'closed-won':
-      return 'success';
-    case 'closed-lost':
-      return 'danger';
-    default:
-      return 'default';
-  }
+  return STAGE_COLORS[stage as keyof typeof STAGE_COLORS] || 'default';
 };
 
 const getStageLabel = (stage: string) => {
@@ -29,12 +25,14 @@ const getStageLabel = (stage: string) => {
     .join(' ');
 };
 
+const currencyFormatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+});
+
 const formatCurrency = (amount?: number) => {
   if (!amount) return '—';
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  }).format(amount);
+  return currencyFormatter.format(amount);
 };
 
 export const OpportunitiesList = () => {
@@ -52,43 +50,14 @@ export const OpportunitiesList = () => {
           </p>
         </header>
 
-        <div className='bg-red-50 border border-red-200 rounded-lg p-6'>
-          <div className='flex items-start'>
-            <svg
-              className='h-6 w-6 text-red-400 mt-0.5'
-              fill='none'
-              viewBox='0 0 24 24'
-              stroke='currentColor'
-            >
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth={2}
-                d='M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
-              />
-            </svg>
-            <div className='ml-3 flex-1'>
-              <h3 className='text-sm font-medium text-red-800'>
-                Failed to Load Opportunities
-              </h3>
-              <div className='mt-2 text-sm text-red-700'>
-                <p>
-                  Unable to fetch opportunities data. Please check your
-                  connection and try again.
-                </p>
-              </div>
-              <div className='mt-4'>
-                <button
-                  onClick={() => refetch()}
-                  disabled={isLoading}
-                  className='bg-red-100 hover:bg-red-200 disabled:opacity-50 disabled:cursor-not-allowed text-red-800 px-4 py-2 rounded-md text-sm font-medium transition-colors'
-                >
-                  {isLoading ? 'Retrying...' : 'Try Again'}
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <ErrorFallback
+          title='Failed to Load Opportunities'
+          description='Unable to fetch opportunities data. Please check your connection and try again.'
+          onRetry={() => refetch()}
+          isRetrying={isLoading}
+        />
+
+        <BackToTopButton threshold={300} />
       </div>
     );
   }
@@ -139,6 +108,8 @@ export const OpportunitiesList = () => {
             Convert qualified leads to create opportunities.
           </p>
         </div>
+
+        <BackToTopButton threshold={300} />
       </div>
     );
   }
@@ -246,6 +217,8 @@ export const OpportunitiesList = () => {
           </table>
         </div>
       </div>
+
+      <BackToTopButton threshold={300} />
     </div>
   );
 };

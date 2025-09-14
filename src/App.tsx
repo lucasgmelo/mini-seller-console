@@ -2,9 +2,9 @@ import { useState } from 'react';
 
 import { LeadsList } from './components/LeadsList';
 import { OpportunitiesList } from './components/OpportunitiesList';
-import { Button } from './components/ui/Button';
 import { ToastContainer } from './components/ui/Toast';
 import { ToastProvider, useToastContext } from './contexts/ToastContext';
+import { ErrorBoundary } from './components/ErrorBoundary';
 
 const AppContent = () => {
   const { toasts, hideToast } = useToastContext();
@@ -23,26 +23,36 @@ const AppContent = () => {
   };
 
   return (
-    <div className='min-h-screen bg-gray-50'>
+    <div className='min-h-screen bg-custom-white'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
-        <nav className='mb-6 sm:mb-8'>
-          <div className='flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-4'>
-            <Button
-              variant={currentView === 'leads' ? 'primary' : 'secondary'}
-              onClick={() => handleViewChange('leads')}
-              className='w-full sm:w-auto'
-            >
-              Leads
-            </Button>
-            <Button
-              variant={
-                currentView === 'opportunities' ? 'primary' : 'secondary'
-              }
-              onClick={() => handleViewChange('opportunities')}
-              className='w-full sm:w-auto'
-            >
-              Opportunities
-            </Button>
+        <nav className='mb-8'>
+          <div className='border-b border-gray-200'>
+            <nav className='-mb-px flex space-x-8' aria-label='Tabs'>
+              <button
+                onClick={() => handleViewChange('leads')}
+                className={`whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm transition-colors ${
+                  currentView === 'leads'
+                    ? 'border-primary-500 text-primary-600'
+                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                }`}
+                aria-current={currentView === 'leads' ? 'page' : undefined}
+              >
+                Leads
+              </button>
+              <button
+                onClick={() => handleViewChange('opportunities')}
+                className={`whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm transition-colors ${
+                  currentView === 'opportunities'
+                    ? 'border-primary-500 text-primary-600'
+                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                }`}
+                aria-current={
+                  currentView === 'opportunities' ? 'page' : undefined
+                }
+              >
+                Opportunities
+              </button>
+            </nav>
           </div>
         </nav>
 
@@ -56,9 +66,11 @@ const AppContent = () => {
 
 function App() {
   return (
-    <ToastProvider>
-      <AppContent />
-    </ToastProvider>
+    <ErrorBoundary>
+      <ToastProvider>
+        <AppContent />
+      </ToastProvider>
+    </ErrorBoundary>
   );
 }
 

@@ -1,0 +1,18 @@
+[
+  {
+    "id": "opp-1",
+    "name": "TechCorp Inc - John Smith",
+    "stage": "proposal",
+    "amount": 45000,
+    "accountName": "TechCorp Inc",
+    "createdAt": "2024-01-15T10:30:00Z"
+  },
+  {
+    "id": "opp-2",
+    "name": "StartupXYZ - Mike Wilson",
+    "stage": "negotiation",
+    "amount": 25000,
+    "accountName": "StartupXYZ",
+    "createdAt": "2024-01-20T14:15:00Z"
+  }
+]

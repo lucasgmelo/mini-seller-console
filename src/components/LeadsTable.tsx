@@ -44,7 +44,7 @@ export const LeadsTable = ({
 
     return sort.direction === 'asc' ? (
       <svg
-        className='w-4 h-4 text-blue-600'
+        className='w-4 h-4 text-primary-600'
         fill='none'
         viewBox='0 0 24 24'
         stroke='currentColor'
@@ -58,7 +58,7 @@ export const LeadsTable = ({
       </svg>
     ) : (
       <svg
-        className='w-4 h-4 text-blue-600'
+        className='w-4 h-4 text-primary-600'
         fill='none'
         viewBox='0 0 24 24'
         stroke='currentColor'
@@ -84,8 +84,8 @@ export const LeadsTable = ({
     return (
       <button
         onClick={() => onSort(field)}
-        className={`flex items-center space-x-1 text-left font-medium transition-colors focus:outline-none focus:text-blue-600 ${
-          isActive ? 'text-blue-600' : 'text-gray-900 hover:text-blue-600'
+        className={`flex items-center space-x-1 text-left font-medium transition-colors focus:outline-none focus:text-primary-600 ${
+          isActive ? 'text-primary-600' : 'text-gray-900 hover:text-primary-600'
         }`}
         title={`Click to sort by ${children}. Current: ${
           isActive

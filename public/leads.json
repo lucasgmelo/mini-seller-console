@@ -1,0 +1,902 @@
+[
+  {
+    "id": "1",
+    "name": "John Smith",
+    "company": "TechFlow Solutions",
+    "email": "john.smith@techflow.com",
+    "source": "website",
+    "score": 85,
+    "status": "qualified"
+  },
+  {
+    "id": "2",
+    "name": "Sarah Johnson",
+    "company": "Digital Marketing Pro",
+    "email": "sarah.johnson@digitalmarketing.com",
+    "source": "referral",
+    "score": 72,
+    "status": "contacted"
+  },
+  {
+    "id": "3",
+    "name": "Mike Wilson",
+    "company": "CloudSync Technologies",
+    "email": "mike.wilson@cloudsync.com",
+    "source": "linkedin",
+    "score": 91,
+    "status": "qualified"
+  },
+  {
+    "id": "4",
+    "name": "Emma Davis",
+    "company": "Enterprise Solutions Corp",
+    "email": "emma.davis@enterprisesol.com",
+    "source": "cold_call",
+    "score": 45,
+    "status": "unqualified"
+  },
+  {
+    "id": "5",
+    "name": "David Brown",
+    "company": "Innovation Labs Inc",
+    "email": "david.brown@innovationlabs.com",
+    "source": "trade_show",
+    "score": 78,
+    "status": "contacted"
+  },
+  {
+    "id": "6",
+    "name": "Lisa Chen",
+    "company": "DataDriven Analytics",
+    "email": "lisa.chen@datadriven.com",
+    "source": "webinar",
+    "score": 88,
+    "status": "qualified"
+  },
+  {
+    "id": "7",
+    "name": "Robert Garcia",
+    "company": "Manufacturing Excellence",
+    "email": "robert.garcia@manufexcellence.com",
+    "source": "website",
+    "score": 56,
+    "status": "new"
+  },
+  {
+    "id": "8",
+    "name": "Jennifer Martinez",
+    "company": "HealthCare Plus",
+    "email": "jennifer.martinez@healthcareplus.com",
+    "source": "referral",
+    "score": 93,
+    "status": "qualified"
+  },
+  {
+    "id": "9",
+    "name": "Daniel Rodriguez",
+    "company": "FinanceFirst Bank",
+    "email": "daniel.rodriguez@financefirst.com",
+    "source": "linkedin",
+    "score": 67,
+    "status": "contacted"
+  },
+  {
+    "id": "10",
+    "name": "Amanda Thompson",
+    "company": "RetailMax Corp",
+    "email": "amanda.thompson@retailmax.com",
+    "source": "cold_call",
+    "score": 39,
+    "status": "unqualified"
+  },
+  {
+    "id": "11",
+    "name": "Christopher Lee",
+    "company": "Construction Pro",
+    "email": "christopher.lee@constructionpro.com",
+    "source": "trade_show",
+    "score": 74,
+    "status": "contacted"
+  },
+  {
+    "id": "12",
+    "name": "Michelle Taylor",
+    "company": "Legal Advisors LLC",
+    "email": "michelle.taylor@legaladvisors.com",
+    "source": "webinar",
+    "score": 82,
+    "status": "qualified"
+  },
+  {
+    "id": "13",
+    "name": "James Anderson",
+    "company": "AutoTech Systems",
+    "email": "james.anderson@autotech.com",
+    "source": "website",
+    "score": 51,
+    "status": "new"
+  },
+  {
+    "id": "14",
+    "name": "Karen White",
+    "company": "Educational Solutions",
+    "email": "karen.white@edusolutions.com",
+    "source": "referral",
+    "score": 86,
+    "status": "qualified"
+  },
+  {
+    "id": "15",
+    "name": "Steven Harris",
+    "company": "Energy Efficient Inc",
+    "email": "steven.harris@energyefficient.com",
+    "source": "linkedin",
+    "score": 63,
+    "status": "contacted"
+  },
+  {
+    "id": "16",
+    "name": "Nicole Clark",
+    "company": "Food Services Global",
+    "email": "nicole.clark@foodservices.com",
+    "source": "cold_call",
+    "score": 42,
+    "status": "unqualified"
+  },
+  {
+    "id": "17",
+    "name": "Andrew Lewis",
+    "company": "Security Solutions Pro",
+    "email": "andrew.lewis@securitypro.com",
+    "source": "trade_show",
+    "score": 79,
+    "status": "contacted"
+  },
+  {
+    "id": "18",
+    "name": "Rachel Walker",
+    "company": "Design Studio Plus",
+    "email": "rachel.walker@designstudio.com",
+    "source": "webinar",
+    "score": 91,
+    "status": "qualified"
+  },
+  {
+    "id": "19",
+    "name": "Mark Hall",
+    "company": "Transportation Hub",
+    "email": "mark.hall@transporthub.com",
+    "source": "website",
+    "score": 48,
+    "status": "new"
+  },
+  {
+    "id": "20",
+    "name": "Angela Allen",
+    "company": "Communications Central",
+    "email": "angela.allen@commcentral.com",
+    "source": "referral",
+    "score": 84,
+    "status": "qualified"
+  },
+  {
+    "id": "21",
+    "name": "Ryan Young",
+    "company": "Software Innovations",
+    "email": "ryan.young@softwareinnovations.com",
+    "source": "linkedin",
+    "score": 71,
+    "status": "contacted"
+  },
+  {
+    "id": "22",
+    "name": "Stephanie King",
+    "company": "Real Estate Masters",
+    "email": "stephanie.king@realestatemasters.com",
+    "source": "cold_call",
+    "score": 37,
+    "status": "unqualified"
+  },
+  {
+    "id": "23",
+    "name": "Brian Wright",
+    "company": "Agriculture Tech",
+    "email": "brian.wright@agritech.com",
+    "source": "trade_show",
+    "score": 76,
+    "status": "contacted"
+  },
+  {
+    "id": "24",
+    "name": "Diana Lopez",
+    "company": "Fashion Forward Retail",
+    "email": "diana.lopez@fashionforward.com",
+    "source": "webinar",
+    "score": 89,
+    "status": "qualified"
+  },
+  {
+    "id": "25",
+    "name": "Kevin Hill",
+    "company": "Sports Equipment Co",
+    "email": "kevin.hill@sportsequipment.com",
+    "source": "website",
+    "score": 53,
+    "status": "new"
+  },
+  {
+    "id": "26",
+    "name": "Patricia Scott",
+    "company": "Insurance Partners",
+    "email": "patricia.scott@insurancepartners.com",
+    "source": "referral",
+    "score": 87,
+    "status": "qualified"
+  },
+  {
+    "id": "27",
+    "name": "Joshua Green",
+    "company": "Environmental Solutions",
+    "email": "joshua.green@envirosolutions.com",
+    "source": "linkedin",
+    "score": 65,
+    "status": "contacted"
+  },
+  {
+    "id": "28",
+    "name": "Laura Adams",
+    "company": "Beauty Products Inc",
+    "email": "laura.adams@beautyproducts.com",
+    "source": "cold_call",
+    "score": 41,
+    "status": "unqualified"
+  },
+  {
+    "id": "29",
+    "name": "Gregory Baker",
+    "company": "Industrial Equipment",
+    "email": "gregory.baker@industrialequip.com",
+    "source": "trade_show",
+    "score": 73,
+    "status": "contacted"
+  },
+  {
+    "id": "30",
+    "name": "Susan Gonzalez",
+    "company": "Pharmaceutical Research",
+    "email": "susan.gonzalez@pharmaresearch.com",
+    "source": "webinar",
+    "score": 92,
+    "status": "qualified"
+  },
+  {
+    "id": "31",
+    "name": "Matthew Nelson",
+    "company": "Logistics Network",
+    "email": "matthew.nelson@logisticsnet.com",
+    "source": "website",
+    "score": 59,
+    "status": "new"
+  },
+  {
+    "id": "32",
+    "name": "Deborah Carter",
+    "company": "Consulting Excellence",
+    "email": "deborah.carter@consultingexcel.com",
+    "source": "referral",
+    "score": 85,
+    "status": "qualified"
+  },
+  {
+    "id": "33",
+    "name": "Anthony Mitchell",
+    "company": "Media Solutions Group",
+    "email": "anthony.mitchell@mediasolutions.com",
+    "source": "linkedin",
+    "score": 68,
+    "status": "contacted"
+  },
+  {
+    "id": "34",
+    "name": "Betty Perez",
+    "company": "Home Improvement Co",
+    "email": "betty.perez@homeimprovement.com",
+    "source": "cold_call",
+    "score": 44,
+    "status": "unqualified"
+  },
+  {
+    "id": "35",
+    "name": "Edward Roberts",
+    "company": "Aerospace Technologies",
+    "email": "edward.roberts@aerospacetech.com",
+    "source": "trade_show",
+    "score": 81,
+    "status": "qualified"
+  },
+  {
+    "id": "36",
+    "name": "Dorothy Turner",
+    "company": "Travel Services Plus",
+    "email": "dorothy.turner@travelservices.com",
+    "source": "webinar",
+    "score": 77,
+    "status": "contacted"
+  },
+  {
+    "id": "37",
+    "name": "Jason Phillips",
+    "company": "Gaming Development",
+    "email": "jason.phillips@gamingdev.com",
+    "source": "website",
+    "score": 54,
+    "status": "new"
+  },
+  {
+    "id": "38",
+    "name": "Helen Campbell",
+    "company": "Wellness Center Corp",
+    "email": "helen.campbell@wellnesscenter.com",
+    "source": "referral",
+    "score": 88,
+    "status": "qualified"
+  },
+  {
+    "id": "39",
+    "name": "Gary Parker",
+    "company": "Renewable Energy Systems",
+    "email": "gary.parker@renewableenergy.com",
+    "source": "linkedin",
+    "score": 72,
+    "status": "contacted"
+  },
+  {
+    "id": "40",
+    "name": "Sandra Evans",
+    "company": "Pet Care Services",
+    "email": "sandra.evans@petcareservices.com",
+    "source": "cold_call",
+    "score": 38,
+    "status": "unqualified"
+  },
+  {
+    "id": "41",
+    "name": "Frank Edwards",
+    "company": "Marine Solutions Inc",
+    "email": "frank.edwards@marinesolutions.com",
+    "source": "trade_show",
+    "score": 75,
+    "status": "contacted"
+  },
+  {
+    "id": "42",
+    "name": "Cheryl Collins",
+    "company": "Event Planning Pro",
+    "email": "cheryl.collins@eventplanning.com",
+    "source": "webinar",
+    "score": 90,
+    "status": "qualified"
+  },
+  {
+    "id": "43",
+    "name": "Harold Stewart",
+    "company": "Mining Operations LLC",
+    "email": "harold.stewart@miningops.com",
+    "source": "website",
+    "score": 49,
+    "status": "new"
+  },
+  {
+    "id": "44",
+    "name": "Joyce Sanchez",
+    "company": "Office Supplies Direct",
+    "email": "joyce.sanchez@officesupplies.com",
+    "source": "referral",
+    "score": 83,
+    "status": "qualified"
+  },
+  {
+    "id": "45",
+    "name": "Carl Morris",
+    "company": "Electrical Systems Corp",
+    "email": "carl.morris@electricalsystems.com",
+    "source": "linkedin",
+    "score": 66,
+    "status": "contacted"
+  },
+  {
+    "id": "46",
+    "name": "Joan Rogers",
+    "company": "Catering Solutions",
+    "email": "joan.rogers@cateringsolutions.com",
+    "source": "cold_call",
+    "score": 43,
+    "status": "unqualified"
+  },
+  {
+    "id": "47",
+    "name": "Arthur Reed",
+    "company": "Photography Studio",
+    "email": "arthur.reed@photostudio.com",
+    "source": "trade_show",
+    "score": 78,
+    "status": "contacted"
+  },
+  {
+    "id": "48",
+    "name": "Frances Cook",
+    "company": "Fitness Equipment Plus",
+    "email": "frances.cook@fitnessequipment.com",
+    "source": "webinar",
+    "score": 86,
+    "status": "qualified"
+  },
+  {
+    "id": "49",
+    "name": "Willie Bailey",
+    "company": "Plumbing Solutions",
+    "email": "willie.bailey@plumbingsolutions.com",
+    "source": "website",
+    "score": 52,
+    "status": "new"
+  },
+  {
+    "id": "50",
+    "name": "Evelyn Rivera",
+    "company": "Architectural Designs",
+    "email": "evelyn.rivera@archdesigns.com",
+    "source": "referral",
+    "score": 91,
+    "status": "qualified"
+  },
+  {
+    "id": "51",
+    "name": "Wayne Cooper",
+    "company": "Tech Support Services",
+    "email": "wayne.cooper@techsupport.com",
+    "source": "linkedin",
+    "score": 69,
+    "status": "contacted"
+  },
+  {
+    "id": "52",
+    "name": "Janice Richardson",
+    "company": "Cleaning Services Pro",
+    "email": "janice.richardson@cleaningpro.com",
+    "source": "cold_call",
+    "score": 40,
+    "status": "unqualified"
+  },
+  {
+    "id": "53",
+    "name": "Roy Cox",
+    "company": "Delivery Network Inc",
+    "email": "roy.cox@deliverynetwork.com",
+    "source": "trade_show",
+    "score": 74,
+    "status": "contacted"
+  },
+  {
+    "id": "54",
+    "name": "Theresa Ward",
+    "company": "Marketing Strategies",
+    "email": "theresa.ward@marketingstrat.com",
+    "source": "webinar",
+    "score": 89,
+    "status": "qualified"
+  },
+  {
+    "id": "55",
+    "name": "Eugene Torres",
+    "company": "Waste Management Co",
+    "email": "eugene.torres@wastemanagement.com",
+    "source": "website",
+    "score": 55,
+    "status": "new"
+  },
+  {
+    "id": "56",
+    "name": "Marie Peterson",
+    "company": "Book Publishing House",
+    "email": "marie.peterson@bookpublishing.com",
+    "source": "referral",
+    "score": 84,
+    "status": "qualified"
+  },
+  {
+    "id": "57",
+    "name": "Ralph Gray",
+    "company": "Security Systems Inc",
+    "email": "ralph.gray@securitysystems.com",
+    "source": "linkedin",
+    "score": 67,
+    "status": "contacted"
+  },
+  {
+    "id": "58",
+    "name": "Judith Ramirez",
+    "company": "Dance Studio Network",
+    "email": "judith.ramirez@dancestudio.com",
+    "source": "cold_call",
+    "score": 36,
+    "status": "unqualified"
+  },
+  {
+    "id": "59",
+    "name": "Philip James",
+    "company": "Chemical Solutions",
+    "email": "philip.james@chemsolutions.com",
+    "source": "trade_show",
+    "score": 80,
+    "status": "qualified"
+  },
+  {
+    "id": "60",
+    "name": "Kathleen Watson",
+    "company": "Interior Design Co",
+    "email": "kathleen.watson@interiordesign.com",
+    "source": "webinar",
+    "score": 76,
+    "status": "contacted"
+  },
+  {
+    "id": "61",
+    "name": "Gerald Brooks",
+    "company": "Outdoor Equipment",
+    "email": "gerald.brooks@outdoorequip.com",
+    "source": "website",
+    "score": 58,
+    "status": "new"
+  },
+  {
+    "id": "62",
+    "name": "Virginia Kelly",
+    "company": "Medical Device Solutions",
+    "email": "virginia.kelly@meddevice.com",
+    "source": "referral",
+    "score": 93,
+    "status": "qualified"
+  },
+  {
+    "id": "63",
+    "name": "Douglas Sanders",
+    "company": "Maintenance Services",
+    "email": "douglas.sanders@maintenance.com",
+    "source": "linkedin",
+    "score": 64,
+    "status": "contacted"
+  },
+  {
+    "id": "64",
+    "name": "Martha Price",
+    "company": "Textile Manufacturing",
+    "email": "martha.price@textilemanuf.com",
+    "source": "cold_call",
+    "score": 47,
+    "status": "unqualified"
+  },
+  {
+    "id": "65",
+    "name": "Jose Bennett",
+    "company": "Custom Furniture Co",
+    "email": "jose.bennett@customfurniture.com",
+    "source": "trade_show",
+    "score": 73,
+    "status": "contacted"
+  },
+  {
+    "id": "66",
+    "name": "Jean Wood",
+    "company": "Accounting Professionals",
+    "email": "jean.wood@accountingpro.com",
+    "source": "webinar",
+    "score": 87,
+    "status": "qualified"
+  },
+  {
+    "id": "67",
+    "name": "Keith Barnes",
+    "company": "Landscaping Services",
+    "email": "keith.barnes@landscaping.com",
+    "source": "website",
+    "score": 50,
+    "status": "new"
+  },
+  {
+    "id": "68",
+    "name": "Carolyn Ross",
+    "company": "Veterinary Clinic Group",
+    "email": "carolyn.ross@vetclinic.com",
+    "source": "referral",
+    "score": 85,
+    "status": "qualified"
+  },
+  {
+    "id": "69",
+    "name": "Terry Henderson",
+    "company": "Print Solutions Inc",
+    "email": "terry.henderson@printsolutions.com",
+    "source": "linkedin",
+    "score": 71,
+    "status": "contacted"
+  },
+  {
+    "id": "70",
+    "name": "Frances Coleman",
+    "company": "Garden Center Co",
+    "email": "frances.coleman@gardencenter.com",
+    "source": "cold_call",
+    "score": 35,
+    "status": "unqualified"
+  },
+  {
+    "id": "71",
+    "name": "Henry Jenkins",
+    "company": "Tool Manufacturing",
+    "email": "henry.jenkins@toolmanuf.com",
+    "source": "trade_show",
+    "score": 79,
+    "status": "contacted"
+  },
+  {
+    "id": "72",
+    "name": "Gloria Perry",
+    "company": "Spa Services Network",
+    "email": "gloria.perry@spaservices.com",
+    "source": "webinar",
+    "score": 88,
+    "status": "qualified"
+  },
+  {
+    "id": "73",
+    "name": "Louis Powell",
+    "company": "Hardware Solutions",
+    "email": "louis.powell@hardwaresolutions.com",
+    "source": "website",
+    "score": 56,
+    "status": "new"
+  },
+  {
+    "id": "74",
+    "name": "Diana Long",
+    "company": "Music Production Co",
+    "email": "diana.long@musicproduction.com",
+    "source": "referral",
+    "score": 82,
+    "status": "qualified"
+  },
+  {
+    "id": "75",
+    "name": "Albert Patterson",
+    "company": "Glass Manufacturing",
+    "email": "albert.patterson@glassmanuf.com",
+    "source": "linkedin",
+    "score": 68,
+    "status": "contacted"
+  },
+  {
+    "id": "76",
+    "name": "Doris Hughes",
+    "company": "Childcare Services",
+    "email": "doris.hughes@childcare.com",
+    "source": "cold_call",
+    "score": 46,
+    "status": "unqualified"
+  },
+  {
+    "id": "77",
+    "name": "Bruce Flores",
+    "company": "Concrete Solutions",
+    "email": "bruce.flores@concretesolutions.com",
+    "source": "trade_show",
+    "score": 77,
+    "status": "contacted"
+  },
+  {
+    "id": "78",
+    "name": "Catherine Washington",
+    "company": "Digital Agency Pro",
+    "email": "catherine.washington@digitalagency.com",
+    "source": "webinar",
+    "score": 90,
+    "status": "qualified"
+  },
+  {
+    "id": "79",
+    "name": "Walter Butler",
+    "company": "Storage Solutions Inc",
+    "email": "walter.butler@storagesolutions.com",
+    "source": "website",
+    "score": 51,
+    "status": "new"
+  },
+  {
+    "id": "80",
+    "name": "Janet Simmons",
+    "company": "Recruitment Specialists",
+    "email": "janet.simmons@recruitment.com",
+    "source": "referral",
+    "score": 86,
+    "status": "qualified"
+  },
+  {
+    "id": "81",
+    "name": "Peter Foster",
+    "company": "Shipping Solutions",
+    "email": "peter.foster@shippingsolutions.com",
+    "source": "linkedin",
+    "score": 65,
+    "status": "contacted"
+  },
+  {
+    "id": "82",
+    "name": "Ruth Gonzales",
+    "company": "Bakery Supplies Co",
+    "email": "ruth.gonzales@bakerysupplies.com",
+    "source": "cold_call",
+    "score": 48,
+    "status": "unqualified"
+  },
+  {
+    "id": "83",
+    "name": "Howard Bryant",
+    "company": "Metal Fabrication",
+    "email": "howard.bryant@metalfab.com",
+    "source": "trade_show",
+    "score": 75,
+    "status": "contacted"
+  },
+  {
+    "id": "84",
+    "name": "Shirley Alexander",
+    "company": "Wedding Planning Co",
+    "email": "shirley.alexander@weddingplanning.com",
+    "source": "webinar",
+    "score": 91,
+    "status": "qualified"
+  },
+  {
+    "id": "85",
+    "name": "Jack Russell",
+    "company": "Electronics Repair",
+    "email": "jack.russell@electronicsrepair.com",
+    "source": "website",
+    "score": 57,
+    "status": "new"
+  },
+  {
+    "id": "86",
+    "name": "Kimberly Griffin",
+    "company": "Training Solutions Inc",
+    "email": "kimberly.griffin@trainingsolutions.com",
+    "source": "referral",
+    "score": 89,
+    "status": "qualified"
+  },
+  {
+    "id": "87",
+    "name": "Billy Diaz",
+    "company": "Roofing Contractors",
+    "email": "billy.diaz@roofingcontractors.com",
+    "source": "linkedin",
+    "score": 62,
+    "status": "contacted"
+  },
+  {
+    "id": "88",
+    "name": "Christina Hayes",
+    "company": "Language School Network",
+    "email": "christina.hayes@languageschool.com",
+    "source": "cold_call",
+    "score": 33,
+    "status": "unqualified"
+  },
+  {
+    "id": "89",
+    "name": "Johnny Myers",
+    "company": "Carpet Installation Co",
+    "email": "johnny.myers@carpetinstall.com",
+    "source": "trade_show",
+    "score": 72,
+    "status": "contacted"
+  },
+  {
+    "id": "90",
+    "name": "Maria Ford",
+    "company": "Beauty Salon Chain",
+    "email": "maria.ford@beautysalon.com",
+    "source": "webinar",
+    "score": 84,
+    "status": "qualified"
+  },
+  {
+    "id": "91",
+    "name": "Jeffrey Wells",
+    "company": "Window Cleaning Services",
+    "email": "jeffrey.wells@windowcleaning.com",
+    "source": "website",
+    "score": 54,
+    "status": "new"
+  },
+  {
+    "id": "92",
+    "name": "Lisa Graham",
+    "company": "Computer Training Center",
+    "email": "lisa.graham@computertraining.com",
+    "source": "referral",
+    "score": 81,
+    "status": "qualified"
+  },
+  {
+    "id": "93",
+    "name": "George Crawford",
+    "company": "Paint Supply Co",
+    "email": "george.crawford@paintsupply.com",
+    "source": "linkedin",
+    "score": 69,
+    "status": "contacted"
+  },
+  {
+    "id": "94",
+    "name": "Brenda Hamilton",
+    "company": "Jewelry Design Studio",
+    "email": "brenda.hamilton@jewelrydesign.com",
+    "source": "cold_call",
+    "score": 32,
+    "status": "unqualified"
+  },
+  {
+    "id": "95",
+    "name": "Raymond Jordan",
+    "company": "Locksmith Services",
+    "email": "raymond.jordan@locksmith.com",
+    "source": "trade_show",
+    "score": 76,
+    "status": "contacted"
+  },
+  {
+    "id": "96",
+    "name": "Anna Reynolds",
+    "company": "Art Gallery Network",
+    "email": "anna.reynolds@artgallery.com",
+    "source": "webinar",
+    "score": 87,
+    "status": "qualified"
+  },
+  {
+    "id": "97",
+    "name": "Roger Watson",
+    "company": "Tire Services Co",
+    "email": "roger.watson@tireservices.com",
+    "source": "website",
+    "score": 53,
+    "status": "new"
+  },
+  {
+    "id": "98",
+    "name": "Kelly Brooks",
+    "company": "Flower Shop Chain",
+    "email": "kelly.brooks@flowershop.com",
+    "source": "referral",
+    "score": 83,
+    "status": "qualified"
+  },
+  {
+    "id": "99",
+    "name": "Samuel Parker",
+    "company": "Appliance Repair Co",
+    "email": "samuel.parker@appliancerepair.com",
+    "source": "linkedin",
+    "score": 70,
+    "status": "contacted"
+  },
+  {
+    "id": "100",
+    "name": "Pamela Murphy",
+    "company": "Fabric Store Network",
+    "email": "pamela.murphy@fabricstore.com",
+    "source": "cold_call",
+    "score": 31,
+    "status": "unqualified"
+  }
+]

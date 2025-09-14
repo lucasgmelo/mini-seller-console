@@ -39,8 +39,21 @@ export const sortLeads = (leads: Lead[], sort: SortState): Lead[] => {
 };
 
 export const validateEmail = (email: string): boolean => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
+  if (!email || typeof email !== 'string') return false;
+
+  const emailRegex =
+    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+
+  if (!emailRegex.test(email)) return false;
+  if (email.length > 254) return false;
+  if (email.includes('..')) return false;
+
+  const [localPart, domain] = email.split('@');
+  if (localPart.length > 64) return false;
+  if (localPart.startsWith('.') || localPart.endsWith('.')) return false;
+  if (domain.startsWith('-') || domain.endsWith('-')) return false;
+
+  return true;
 };
 
 export const generateId = (): string => {

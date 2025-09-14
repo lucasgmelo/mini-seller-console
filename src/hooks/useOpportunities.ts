@@ -16,6 +16,9 @@ export const useOpportunities = () => {
   } = useQuery({
     queryKey: ['opportunities'],
     queryFn: opportunitiesApi.getAll,
+    staleTime: 5 * 60 * 1000,
+    gcTime: 10 * 60 * 1000,
+    refetchOnWindowFocus: false,
   });
 
   const createMutation = useMutation({

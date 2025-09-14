@@ -29,6 +29,9 @@ export const useLeads = () => {
   } = useQuery({
     queryKey: ['leads'],
     queryFn: leadsApi.getAll,
+    staleTime: 5 * 60 * 1000,
+    gcTime: 10 * 60 * 1000,
+    refetchOnWindowFocus: false,
   });
 
   const updateMutation = useMutation({

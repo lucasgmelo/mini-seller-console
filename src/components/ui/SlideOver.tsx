@@ -75,7 +75,7 @@ export const SlideOver = ({
               </h2>
               <button
                 onClick={onClose}
-                className='text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md p-1'
+                className='text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500 rounded-md p-1'
                 aria-label='Close panel'
               >
                 <svg
