@@ -65,8 +65,8 @@ export const SlideOver = ({
           className='pointer-events-auto w-screen max-w-sm sm:max-w-md transform transition ease-in-out duration-300'
           tabIndex={-1}
         >
-          <div className='flex h-full flex-col overflow-y-scroll bg-white shadow-xl'>
-            <div className='flex items-center justify-between px-4 sm:px-6 py-4 border-b border-gray-200'>
+          <div className='flex h-full flex-col overflow-y-scroll bg-surface-50 shadow-xl'>
+            <div className='flex items-center justify-between px-4 sm:px-6 py-4 border-b border-surface-200'>
               <h2
                 id='slide-over-title'
                 className='text-lg font-semibold text-gray-900'
@@ -75,7 +75,7 @@ export const SlideOver = ({
               </h2>
               <button
                 onClick={onClose}
-                className='text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500 rounded-md p-1'
+                className='text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-300 rounded-md p-1'
                 aria-label='Close panel'
               >
                 <svg

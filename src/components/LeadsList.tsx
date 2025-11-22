@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 import type { Lead } from '../types';
 import { useLeads } from '../hooks/useLeads';
@@ -7,7 +7,6 @@ import { LeadsTable } from './LeadsTable';
 import { SlideOver } from './ui/SlideOver';
 import { LeadEditPanel } from './LeadEditPanel';
 import { ErrorFallback } from './ui/ErrorFallback';
-import { BackToTopButton } from './ui/BackToTopButton';
 
 export const LeadsList = () => {
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
@@ -24,31 +23,41 @@ export const LeadsList = () => {
     updateLead,
   } = useLeads();
 
-  const handleSort = (field: keyof Lead) => {
-    if (sort.field !== field) {
-      updateSort({ field, direction: 'asc' });
-    } else if (sort.direction === 'asc') {
-      updateSort({ field, direction: 'desc' });
-    } else {
-      updateSort({ field: null, direction: 'asc' });
-    }
-  };
+  const handleSort = useCallback(
+    (field: keyof Lead) => {
+      if (sort.field !== field) {
+        updateSort({ field, direction: 'asc' });
+      } else if (sort.direction === 'asc') {
+        updateSort({ field, direction: 'desc' });
+      } else {
+        updateSort({ field: null, direction: 'asc' });
+      }
+    },
+    [sort.field, sort.direction, updateSort]
+  );
 
-  const handleSelectLead = (lead: Lead) => {
+  const handleSelectLead = useCallback((lead: Lead) => {
     setSelectedLead(lead);
-  };
+  }, []);
 
-  const handleSaveLead = async (updates: Partial<Lead>) => {
-    if (selectedLead) {
-      await updateLead(selectedLead.id, updates);
-    }
-  };
+  const handleSaveLead = useCallback(
+    async (updates: Partial<Lead>) => {
+      if (selectedLead) {
+        await updateLead(selectedLead.id, updates);
+      }
+    },
+    [selectedLead, updateLead]
+  );
+
+  const handleClosePanel = useCallback(() => {
+    setSelectedLead(null);
+  }, []);
 
   if (error) {
     return (
       <div className='space-y-6'>
         <header className='mb-6'>
-          <h1 className='text-xl sm:text-2xl font-bold text-primary-600'>
+          <h1 className='text-xl sm:text-2xl font-bold text-primary-800'>
             Leads
           </h1>
           <p className='text-sm sm:text-base text-gray-600'>
@@ -62,23 +71,21 @@ export const LeadsList = () => {
           onRetry={() => refetch()}
           isRetrying={isLoading}
         />
-
-        <BackToTopButton threshold={300} />
       </div>
     );
   }
 
   return (
-    <div className='space-y-6'>
+    <div className='flex flex-col h-full'>
       <a
         href='#main-content'
-        className='sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary-600 text-custom-white px-4 py-2 rounded-md z-50'
+        className='sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary-300 text-primary-900 px-4 py-2 rounded-md z-50'
       >
         Skip to main content
       </a>
 
-      <header className='mb-6'>
-        <h1 className='text-xl sm:text-2xl font-bold text-primary-600'>
+      <header className='mb-6 flex-shrink-0'>
+        <h1 className='text-xl sm:text-2xl font-bold text-primary-800'>
           Leads
         </h1>
         <p className='text-sm sm:text-base text-gray-600'>
@@ -86,13 +93,15 @@ export const LeadsList = () => {
         </p>
       </header>
 
-      <LeadsFilters
-        filters={filters}
-        onFiltersChange={updateFilters}
-        resultCount={leads.length}
-      />
+      <div className='flex-shrink-0'>
+        <LeadsFilters
+          filters={filters}
+          onFiltersChange={updateFilters}
+          resultCount={leads.length}
+        />
+      </div>
 
-      <main id='main-content'>
+      <main id='main-content' className='flex-1 min-h-0'>
         <LeadsTable
           leads={leads}
           loading={isLoading}
@@ -104,20 +113,18 @@ export const LeadsList = () => {
 
       <SlideOver
         isOpen={!!selectedLead}
-        onClose={() => setSelectedLead(null)}
+        onClose={handleClosePanel}
         title='Edit Lead'
       >
         {selectedLead && (
           <LeadEditPanel
             lead={selectedLead}
             onSave={handleSaveLead}
-            onClose={() => setSelectedLead(null)}
+            onClose={handleClosePanel}
             isLoading={isLoading}
           />
         )}
       </SlideOver>
-
-      <BackToTopButton threshold={300} />
     </div>
   );
 };

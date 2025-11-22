@@ -1,5 +1,7 @@
 # Mini Seller Console
 
+![Demo](demo.gif)
+
 A clean and efficient lead management system built to handle the sales pipeline from lead capture to opportunity conversion.
 
 ## Overview
@@ -10,7 +12,7 @@ This console provides a streamlined interface for sales teams to manage leads an
 
 **Leads Management**
 - Browse through leads loaded from JSON data
-- Search by company name or contact name  
+- Search by company name or contact name
 - Filter by lead status (new, contacted, qualified, unqualified)
 - Sort by lead score to prioritize high-value prospects
 
@@ -26,15 +28,22 @@ This console provides a streamlined interface for sales teams to manage leads an
 - Track opportunities in a separate view with stage indicators
 - Mobile-friendly cards and desktop table views
 
+**Navigation**
+- Sidebar navigation for desktop with persistent view selection
+- Hamburger menu for mobile with smooth transitions
+- View preference saved to localStorage
+
 ## Technical Choices
 
 **React + TypeScript** for type safety and better development experience. Using Vite for fast builds and hot reloading during development.
 
 **TanStack Query** handles all the data fetching, caching, and optimistic updates. Much cleaner than managing loading states manually.
 
-**Tailwind CSS** for styling because it's fast to work with and keeps the bundle size reasonable. Custom color scheme to match brand requirements.
+**Tailwind CSS** for styling because it's fast to work with and keeps the bundle size reasonable. Custom color scheme with primary (#94eff1) and accent (#c3f628) colors.
 
-**Local Storage** persistence for filters and sort preferences. Your search stays the same when you refresh the page.
+**Local Storage** persistence for filters, sort preferences, and current view. Your settings stay the same when you refresh the page.
+
+**Performance Optimizations** with `useCallback` to prevent unnecessary re-renders and maintain smooth interactions.
 
 The error handling shows toast notifications instead of breaking the whole page - way better user experience when things go wrong.
 
@@ -43,10 +52,11 @@ The error handling shows toast notifications instead of breaking the whole page 
 ```
 src/
 ├── components/          # UI components
-│   ├── ui/             # Reusable UI elements (Button, Input, etc.)
+│   ├── ui/             # Reusable UI elements (Button, Input, Badge, Sidebar, SlideOver, Toast)
 │   ├── LeadsList.tsx   # Main leads interface
 │   └── ...
-├── hooks/              # Custom React hooks
+├── contexts/           # React contexts (ToastContext)
+├── hooks/              # Custom React hooks (useLeads, useOpportunities)
 ├── services/           # API calls and data fetching
 ├── types/              # TypeScript definitions
 └── utils/              # Helper functions
@@ -64,11 +74,12 @@ The data loads from JSON files in the public folder. No backend needed - everyth
 ## Key Features Implemented
 
 - **Search & Filtering**: Debounced search with visual feedback
-- **Data Persistence**: Filters and sort preferences saved locally  
-- **Error Recovery**: Failed operations show notifications, don't break the flow
-- **Mobile Support**: Responsive layout that works on phones and tablets
-- **Accessibility**: Proper ARIA labels, keyboard navigation support
-- **Performance**: Handles 100+ leads smoothly with virtualization considerations
+- **Data Persistence**: Filters, sort preferences, and view saved locally
+- **Error Recovery**: Failed operations show notifications with retry option
+- **Mobile Support**: Responsive layout with hamburger menu and card views
+- **Accessibility**: Proper ARIA labels, keyboard navigation, skip links
+- **Performance**: useCallback optimizations, sticky table headers, contained scroll
+- **Custom Theme**: Branded color palette with primary and accent colors
 
 ## Notes
 

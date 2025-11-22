@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useCallback } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 
 import type { Lead, FilterState, SortState } from '../types';
@@ -71,17 +71,26 @@ export const useLeads = () => {
     return sortLeads(filtered, sort);
   }, [leads, filters, sort]);
 
-  const updateLead = (leadId: string, updates: Partial<Lead>) => {
-    return updateMutation.mutateAsync({ id: leadId, updates });
-  };
+  const updateLead = useCallback(
+    (leadId: string, updates: Partial<Lead>) => {
+      return updateMutation.mutateAsync({ id: leadId, updates });
+    },
+    [updateMutation]
+  );
 
-  const updateFilters = (newFilters: Partial<FilterState>) => {
-    setFilters(prev => ({ ...prev, ...newFilters }));
-  };
+  const updateFilters = useCallback(
+    (newFilters: Partial<FilterState>) => {
+      setFilters(prev => ({ ...prev, ...newFilters }));
+    },
+    [setFilters]
+  );
 
-  const updateSort = (newSort: Partial<SortState>) => {
-    setSort(prev => ({ ...prev, ...newSort }));
-  };
+  const updateSort = useCallback(
+    (newSort: Partial<SortState>) => {
+      setSort(prev => ({ ...prev, ...newSort }));
+    },
+    [setSort]
+  );
 
   return {
     leads: processedLeads,

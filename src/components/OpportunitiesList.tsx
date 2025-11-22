@@ -1,5 +1,4 @@
 import { useOpportunities } from '../hooks/useOpportunities';
-import { BackToTopButton } from './ui/BackToTopButton';
 import { Badge } from './ui/Badge';
 import { ErrorFallback } from './ui/ErrorFallback';
 
@@ -42,7 +41,7 @@ export const OpportunitiesList = () => {
     return (
       <div className='space-y-6'>
         <header>
-          <h1 className='text-xl sm:text-2xl font-bold text-gray-900'>
+          <h1 className='text-xl sm:text-2xl font-bold text-primary-800'>
             Opportunities
           </h1>
           <p className='text-sm sm:text-base text-gray-600'>
@@ -56,26 +55,24 @@ export const OpportunitiesList = () => {
           onRetry={() => refetch()}
           isRetrying={isLoading}
         />
-
-        <BackToTopButton threshold={300} />
       </div>
     );
   }
 
   if (isLoading) {
     return (
-      <div className='bg-white shadow rounded-lg'>
+      <div className='bg-surface-50 shadow rounded-lg'>
         <div className='animate-pulse'>
-          <div className='px-6 py-4 border-b border-gray-200'>
-            <div className='h-4 bg-gray-200 rounded w-1/4'></div>
+          <div className='px-6 py-4 border-b border-surface-200'>
+            <div className='h-4 bg-surface-200 rounded w-1/4'></div>
           </div>
           {[...Array(3)].map((_, i) => (
-            <div key={i} className='px-6 py-4 border-b border-gray-200'>
+            <div key={i} className='px-6 py-4 border-b border-surface-200'>
               <div className='flex space-x-4'>
-                <div className='h-4 bg-gray-200 rounded w-1/4'></div>
-                <div className='h-4 bg-gray-200 rounded w-1/4'></div>
-                <div className='h-4 bg-gray-200 rounded w-1/6'></div>
-                <div className='h-4 bg-gray-200 rounded w-1/6'></div>
+                <div className='h-4 bg-surface-200 rounded w-1/4'></div>
+                <div className='h-4 bg-surface-200 rounded w-1/4'></div>
+                <div className='h-4 bg-surface-200 rounded w-1/6'></div>
+                <div className='h-4 bg-surface-200 rounded w-1/6'></div>
               </div>
             </div>
           ))}
@@ -86,7 +83,7 @@ export const OpportunitiesList = () => {
 
   if (opportunities.length === 0) {
     return (
-      <div className='bg-white shadow rounded-lg p-6'>
+      <div className='bg-surface-50 shadow rounded-lg p-6'>
         <div className='text-center'>
           <svg
             className='mx-auto h-12 w-12 text-gray-400'
@@ -108,8 +105,6 @@ export const OpportunitiesList = () => {
             Convert qualified leads to create opportunities.
           </p>
         </div>
-
-        <BackToTopButton threshold={300} />
       </div>
     );
   }
@@ -125,14 +120,14 @@ export const OpportunitiesList = () => {
         </p>
       </header>
 
-      <div className='bg-white shadow rounded-lg overflow-hidden'>
+      <div className='bg-surface-50 shadow rounded-lg overflow-hidden'>
         {/* Mobile Cards View */}
         <div className='block sm:hidden'>
           <div className='space-y-4 p-4'>
             {opportunities.map(opportunity => (
               <div
                 key={opportunity.id}
-                className='border border-gray-200 rounded-lg p-4 space-y-3'
+                className='border border-surface-300 rounded-lg p-4 space-y-3'
               >
                 <div className='flex justify-between items-start'>
                   <div>
@@ -170,7 +165,7 @@ export const OpportunitiesList = () => {
             role='table'
             aria-label='Opportunities table'
           >
-            <thead className='bg-gray-50'>
+            <thead className='bg-surface-100'>
               <tr>
                 <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
                   Name
@@ -189,9 +184,9 @@ export const OpportunitiesList = () => {
                 </th>
               </tr>
             </thead>
-            <tbody className='bg-white divide-y divide-gray-200'>
+            <tbody className='bg-surface-50 divide-y divide-surface-200'>
               {opportunities.map(opportunity => (
-                <tr key={opportunity.id} className='hover:bg-gray-50'>
+                <tr key={opportunity.id} className='hover:bg-surface-100'>
                   <td className='px-6 py-4 whitespace-nowrap'>
                     <div className='text-sm font-medium text-gray-900'>
                       {opportunity.name}
@@ -217,8 +212,6 @@ export const OpportunitiesList = () => {
           </table>
         </div>
       </div>
-
-      <BackToTopButton threshold={300} />
     </div>
   );
 };

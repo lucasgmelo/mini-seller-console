@@ -33,19 +33,19 @@ export const Toast = ({
   }, [id, duration, onClose]);
 
   const bgColor = {
-    success: 'bg-green-50 border-green-200',
+    success: 'bg-accent-50 border-accent-200',
     error: 'bg-red-50 border-red-200',
     info: 'bg-primary-50 border-primary-200',
   }[type];
 
   const iconColor = {
-    success: 'text-green-400',
+    success: 'text-accent-600',
     error: 'text-red-400',
-    info: 'text-primary-400',
+    info: 'text-primary-600',
   }[type];
 
   const textColor = {
-    success: 'text-green-800',
+    success: 'text-accent-900',
     error: 'text-red-800',
     info: 'text-primary-800',
   }[type];

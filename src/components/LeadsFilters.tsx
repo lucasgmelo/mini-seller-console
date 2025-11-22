@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 import type { FilterState, LeadStatus } from '../types';
 import { Input } from './ui/Input';
@@ -41,23 +41,29 @@ export const LeadsFilters = ({
     }
   }, [searchValue, filters.search, onFiltersChange]);
 
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(e.target.value);
-  };
+  const handleSearchChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setSearchValue(e.target.value);
+    },
+    []
+  );
 
-  const handleStatusChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    onFiltersChange({ status: e.target.value as LeadStatus | 'all' });
-  };
+  const handleStatusChange = useCallback(
+    (e: React.ChangeEvent<HTMLSelectElement>) => {
+      onFiltersChange({ status: e.target.value as LeadStatus | 'all' });
+    },
+    [onFiltersChange]
+  );
 
-  const handleClearFilters = () => {
+  const handleClearFilters = useCallback(() => {
     setSearchValue('');
     onFiltersChange({ search: '', status: 'all' });
-  };
+  }, [onFiltersChange]);
 
   const hasActiveFilters = filters.search || filters.status !== 'all';
 
   return (
-    <div className='bg-white p-6 rounded-lg shadow mb-6'>
+    <div className='bg-surface-50 p-6 rounded-lg shadow mb-6'>
       <div className='flex flex-col lg:flex-row gap-4 items-start lg:items-end'>
         <div className='flex-1 min-w-0 relative'>
           <Input
@@ -116,7 +122,7 @@ export const LeadsFilters = ({
         </span>
 
         {hasActiveFilters && (
-          <span className='text-primary-600'>Filters applied</span>
+          <span className='text-primary-700'>Filters applied</span>
         )}
       </div>
     </div>

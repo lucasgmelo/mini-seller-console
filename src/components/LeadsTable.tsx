@@ -150,14 +150,14 @@ export const LeadsTable = ({
   }
 
   return (
-    <div className='bg-white shadow rounded-lg overflow-hidden'>
+    <div className='bg-surface-50 shadow rounded-lg overflow-hidden h-full flex flex-col'>
       {/* Mobile Cards View */}
-      <div className='block sm:hidden'>
+      <div className='block sm:hidden overflow-y-auto flex-1'>
         <div className='space-y-4 p-4'>
           {leads.map(lead => (
             <div
               key={lead.id}
-              className='border border-gray-200 rounded-lg p-4 space-y-3 cursor-pointer hover:bg-gray-50'
+              className='border border-surface-300 rounded-lg p-4 space-y-3 cursor-pointer hover:bg-surface-100'
               onClick={() => onSelectLead(lead)}
             >
               <div className='flex justify-between items-start'>
@@ -200,92 +200,94 @@ export const LeadsTable = ({
       </div>
 
       {/* Desktop Table View */}
-      <div className='hidden sm:block overflow-x-auto'>
-        <table
-          className='min-w-full divide-y divide-gray-200'
-          role='table'
-          aria-label='Leads table'
-        >
-          <thead className='bg-gray-50'>
-            <tr>
-              <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
-                <SortButton field='name'>Name</SortButton>
-              </th>
-              <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
-                <SortButton field='company'>Company</SortButton>
-              </th>
-              <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
-                <SortButton field='source'>Source</SortButton>
-              </th>
-              <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
-                <SortButton field='score'>Score</SortButton>
-              </th>
-              <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
-                <SortButton field='status'>Status</SortButton>
-              </th>
-              <th className='px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider'>
-                Actions
-              </th>
-            </tr>
-          </thead>
-          <tbody className='bg-white divide-y divide-gray-200'>
-            {leads.map(lead => (
-              <tr
-                key={lead.id}
-                className='hover:bg-gray-50 cursor-pointer focus-within:bg-gray-50'
-                onClick={() => onSelectLead(lead)}
-                role='button'
-                tabIndex={0}
-                aria-label={`Edit ${lead.name} from ${lead.company}`}
-                onKeyDown={e => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    onSelectLead(lead);
-                  }
-                }}
-              >
-                <td className='px-6 py-4 whitespace-nowrap'>
-                  <div>
-                    <div className='text-sm font-medium text-gray-900'>
-                      {lead.name}
-                    </div>
-                    <div className='text-sm text-gray-500'>{lead.email}</div>
-                  </div>
-                </td>
-                <td className='px-6 py-4 whitespace-nowrap text-sm text-gray-900'>
-                  {lead.company}
-                </td>
-                <td className='px-6 py-4 whitespace-nowrap text-sm text-gray-900'>
-                  {lead.source}
-                </td>
-                <td className='px-6 py-4 whitespace-nowrap'>
-                  <span
-                    className={`text-sm font-medium ${getScoreColor(lead.score)}`}
-                  >
-                    {formatScore(lead.score)}
-                  </span>
-                </td>
-                <td className='px-6 py-4 whitespace-nowrap'>
-                  <Badge variant={getStatusColor(lead.status)}>
-                    {getStatusLabel(lead.status)}
-                  </Badge>
-                </td>
-                <td className='px-6 py-4 whitespace-nowrap text-right text-sm font-medium'>
-                  <Button
-                    size='sm'
-                    variant='ghost'
-                    onClick={e => {
-                      e.stopPropagation();
-                      onSelectLead(lead);
-                    }}
-                  >
-                    Edit
-                  </Button>
-                </td>
+      <div className='hidden sm:flex sm:flex-col flex-1 min-h-0'>
+        <div className='overflow-auto flex-1'>
+          <table
+            className='min-w-full divide-y divide-gray-200'
+            role='table'
+            aria-label='Leads table'
+          >
+            <thead className='bg-surface-100 sticky top-0 z-10'>
+              <tr>
+                <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
+                  <SortButton field='name'>Name</SortButton>
+                </th>
+                <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
+                  <SortButton field='company'>Company</SortButton>
+                </th>
+                <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
+                  <SortButton field='source'>Source</SortButton>
+                </th>
+                <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
+                  <SortButton field='score'>Score</SortButton>
+                </th>
+                <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
+                  <SortButton field='status'>Status</SortButton>
+                </th>
+                <th className='px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider'>
+                  Actions
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className='bg-surface-50 divide-y divide-surface-200'>
+              {leads.map(lead => (
+                <tr
+                  key={lead.id}
+                  className='hover:bg-surface-100 cursor-pointer focus-within:bg-surface-100'
+                  onClick={() => onSelectLead(lead)}
+                  role='button'
+                  tabIndex={0}
+                  aria-label={`Edit ${lead.name} from ${lead.company}`}
+                  onKeyDown={e => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      onSelectLead(lead);
+                    }
+                  }}
+                >
+                  <td className='px-6 py-4 whitespace-nowrap'>
+                    <div>
+                      <div className='text-sm font-medium text-gray-900'>
+                        {lead.name}
+                      </div>
+                      <div className='text-sm text-gray-500'>{lead.email}</div>
+                    </div>
+                  </td>
+                  <td className='px-6 py-4 whitespace-nowrap text-sm text-gray-900'>
+                    {lead.company}
+                  </td>
+                  <td className='px-6 py-4 whitespace-nowrap text-sm text-gray-900'>
+                    {lead.source}
+                  </td>
+                  <td className='px-6 py-4 whitespace-nowrap'>
+                    <span
+                      className={`text-sm font-medium ${getScoreColor(lead.score)}`}
+                    >
+                      {formatScore(lead.score)}
+                    </span>
+                  </td>
+                  <td className='px-6 py-4 whitespace-nowrap'>
+                    <Badge variant={getStatusColor(lead.status)}>
+                      {getStatusLabel(lead.status)}
+                    </Badge>
+                  </td>
+                  <td className='px-6 py-4 whitespace-nowrap text-right text-sm font-medium'>
+                    <Button
+                      size='sm'
+                      variant='ghost'
+                      onClick={e => {
+                        e.stopPropagation();
+                        onSelectLead(lead);
+                      }}
+                    >
+                      Edit
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

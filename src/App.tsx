@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 import { LeadsList } from './components/LeadsList';
 import { OpportunitiesList } from './components/OpportunitiesList';
 import { ToastContainer } from './components/ui/Toast';
+import { Sidebar } from './components/ui/Sidebar';
 import { ToastProvider, useToastContext } from './contexts/ToastContext';
 import { ErrorBoundary } from './components/ErrorBoundary';
 
@@ -17,47 +18,20 @@ const AppContent = () => {
     }
   );
 
-  const handleViewChange = (view: 'leads' | 'opportunities') => {
-    setCurrentView(view);
+  const handleViewChange = useCallback((view: string) => {
+    setCurrentView(view as 'leads' | 'opportunities');
     localStorage.setItem('mini-seller-console-view', view);
-  };
+  }, []);
 
   return (
-    <div className='min-h-screen bg-custom-white'>
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
-        <nav className='mb-8'>
-          <div className='border-b border-gray-200'>
-            <nav className='-mb-px flex space-x-8' aria-label='Tabs'>
-              <button
-                onClick={() => handleViewChange('leads')}
-                className={`whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm transition-colors ${
-                  currentView === 'leads'
-                    ? 'border-primary-500 text-primary-600'
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                }`}
-                aria-current={currentView === 'leads' ? 'page' : undefined}
-              >
-                Leads
-              </button>
-              <button
-                onClick={() => handleViewChange('opportunities')}
-                className={`whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm transition-colors ${
-                  currentView === 'opportunities'
-                    ? 'border-primary-500 text-primary-600'
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                }`}
-                aria-current={
-                  currentView === 'opportunities' ? 'page' : undefined
-                }
-              >
-                Opportunities
-              </button>
-            </nav>
-          </div>
-        </nav>
+    <div className='h-screen flex flex-col lg:flex-row bg-surface-100'>
+      <Sidebar currentView={currentView} onViewChange={handleViewChange} />
 
-        {currentView === 'leads' ? <LeadsList /> : <OpportunitiesList />}
-      </div>
+      <main className='flex-1 min-h-0 flex flex-col overflow-hidden'>
+        <div className='flex-1 min-h-0 p-4 sm:p-6 lg:p-8'>
+          {currentView === 'leads' ? <LeadsList /> : <OpportunitiesList />}
+        </div>
+      </main>
 
       <ToastContainer toasts={toasts} onClose={hideToast} />
     </div>
