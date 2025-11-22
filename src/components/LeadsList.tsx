@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 
 import type { Lead } from '../types';
 import { useLeads } from '../hooks/useLeads';
@@ -9,7 +9,7 @@ import { LeadEditPanel } from './LeadEditPanel';
 import { ErrorFallback } from './ui/ErrorFallback';
 
 export const LeadsList = () => {
-  const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
+  const [selectedLeadId, setSelectedLeadId] = useState<string | null>(null);
 
   const {
     leads,
@@ -22,6 +22,11 @@ export const LeadsList = () => {
     updateSort,
     updateLead,
   } = useLeads();
+
+  const selectedLead = useMemo(
+    () => leads.find(lead => lead.id === selectedLeadId) ?? null,
+    [leads, selectedLeadId]
+  );
 
   const handleSort = useCallback(
     (field: keyof Lead) => {
@@ -37,20 +42,20 @@ export const LeadsList = () => {
   );
 
   const handleSelectLead = useCallback((lead: Lead) => {
-    setSelectedLead(lead);
+    setSelectedLeadId(lead.id);
   }, []);
 
   const handleSaveLead = useCallback(
     async (updates: Partial<Lead>) => {
-      if (selectedLead) {
-        await updateLead(selectedLead.id, updates);
+      if (selectedLeadId) {
+        await updateLead(selectedLeadId, updates);
       }
     },
-    [selectedLead, updateLead]
+    [selectedLeadId, updateLead]
   );
 
   const handleClosePanel = useCallback(() => {
-    setSelectedLead(null);
+    setSelectedLeadId(null);
   }, []);
 
   if (error) {

@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import { useMutation } from '@tanstack/react-query';
 
 import type { Lead, LeadStatus, OpportunityStage } from '../types';
@@ -48,7 +48,11 @@ export const LeadEditPanel = ({
     status: lead.status,
   });
   const [errors, setErrors] = useState<{ email?: string }>({});
-  const [hasChanges, setHasChanges] = useState(false);
+
+  const hasChanges = useMemo(
+    () => formData.email !== lead.email || formData.status !== lead.status,
+    [formData.email, formData.status, lead.email, lead.status]
+  );
   const [showConvertForm, setShowConvertForm] = useState(false);
   const [convertData, setConvertData] = useState({
     stage: 'prospecting' as OpportunityStage,
@@ -76,13 +80,7 @@ export const LeadEditPanel = ({
   const handleEmailChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const email = e.target.value;
-      setFormData(prev => {
-        const newData = { ...prev, email };
-        setHasChanges(
-          newData.email !== lead.email || newData.status !== lead.status
-        );
-        return newData;
-      });
+      setFormData(prev => ({ ...prev, email }));
 
       if (email && !validateEmail(email)) {
         setErrors(prev => ({
@@ -93,21 +91,15 @@ export const LeadEditPanel = ({
         setErrors(prev => ({ ...prev, email: undefined }));
       }
     },
-    [lead.email, lead.status]
+    []
   );
 
   const handleStatusChange = useCallback(
     (e: React.ChangeEvent<HTMLSelectElement>) => {
       const status = e.target.value as LeadStatus;
-      setFormData(prev => {
-        const newData = { ...prev, status };
-        setHasChanges(
-          newData.email !== lead.email || newData.status !== lead.status
-        );
-        return newData;
-      });
+      setFormData(prev => ({ ...prev, status }));
     },
-    [lead.email, lead.status]
+    []
   );
 
   const handleSave = useCallback(async () => {
@@ -122,7 +114,6 @@ export const LeadEditPanel = ({
 
     if (Object.keys(updates).length > 0) {
       await onSave(updates);
-      setHasChanges(false);
     }
   }, [formData.email, formData.status, lead.email, lead.status, onSave]);
 
@@ -130,7 +121,8 @@ export const LeadEditPanel = ({
     convertMutation.mutate();
   }, [convertMutation]);
 
-  const canConvertToOpportunity = lead.status === 'qualified';
+  const canConvertToOpportunity =
+    lead.status === 'qualified' && formData.status === 'qualified';
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
@@ -216,8 +208,8 @@ export const LeadEditPanel = ({
           <label className='block text-sm font-medium text-gray-700 mb-2'>
             Current Status
           </label>
-          <Badge variant={getStatusColor(lead.status)} size='md'>
-            {getStatusLabel(lead.status)}
+          <Badge variant={getStatusColor(formData.status)} size='md'>
+            {getStatusLabel(formData.status)}
           </Badge>
         </div>
 
