@@ -1,6 +1,8 @@
 # Mini Seller Console
 
-![Demo](https://raw.githubusercontent.com/lucasgmelo/mini-seller-console/main/demo.gif)
+<video src="https://github.com/user-attachments/assets/b2bd37cb-9986-4a69-92bb-ca88a44881ea" autoplay loop muted playsinline>
+  Seu navegador não suporta vídeos.
+</video>
 
 A clean and efficient lead management system built to handle the sales pipeline from lead capture to opportunity conversion.
 
